@@ -1,0 +1,18 @@
+{% extends 'common/registerbase.html' %}
+
+{% block titele %}ログアウト{% endblock %}
+
+{% block content %}
+<p>ログアウトしました。</p>
+<p><a href="{% url 'login' %}">ログイン画面へ</a></p>
+{% endblock %}
+
+<header>
+    <div class="title">{% block titele %}Sample{% endblock %}</div>
+    {% if user.is_authenticated %}
+    <p>{{ user.username }}でログイン中</p>
+    
+    {% else %}
+    <p>ログインしていません</p>
+    {% endif %}
+  </header>

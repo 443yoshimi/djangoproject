@@ -1,0 +1,75 @@
+/* ----------------------  
+横棒グラフ
+---------------------- */
+.container {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: row; /* 要素を横に並べる */
+    justify-content: space-evenly; /* 要素を均等間隔に分散させる */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+.ctnsdw{
+  box-shadow: rgb(0 0 0 / 75%) 2px 2px 6px 
+}
+
+.w10h10_p{
+  width: 100%;
+  height: 100%;
+}
+
+.item {
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  padding: 4px;
+}
+
+.item_label {
+  white-space: nowrap;
+}
+
+.markmidle{
+  display: inline-block;
+  position: absolute;
+  transform: translateY(100%) translateX(-50%);
+}
+
+.grpltmr{
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.grprgtmr{
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+/* ---------------------- 
+位置
+---------------------- */
+.fright{
+  float: right;
+}
+
+/* ---------------------- 
+色
+---------------------- */
+.blue {
+  background-color: #add8e6;
+}
+
+.yellow {
+  background-color: #ffff00;
+}
+
+.orange {
+  background-color: #ffa500;
+}
+
+.pink {
+  background-color: #ffc0cb;
+}

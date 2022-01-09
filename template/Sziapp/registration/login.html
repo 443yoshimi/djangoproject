@@ -1,0 +1,13 @@
+{% extends "common/registerbase.html" %}
+{% block titele %}ログイン{% endblock %}
+{% block content %}
+
+<form action="" method="POST">
+    <h1><span>惣菜</span> /Dish/</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">ログイン</button>
+        {% csrf_token %}
+    </div>
+</form>
+{% endblock %}

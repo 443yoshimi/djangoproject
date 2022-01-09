@@ -1,0 +1,59 @@
+{% load static %}
+{% bootstrap_css %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="{% static 'js/jqueryrotate.js' %}"></script>
+        <script src="{% static 'js/common.js' %}"></script>
+        <script src="https://rawgit.com/jquery/jquery-ui/master/ui/i18n/datepicker-ja.js"></script>
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        <div class="row height100p">
+            <div class="col-8" id = "headerid">
+                <img alt="惣菜製造管理分析システム" height="40" src="{% static 'image/logo.png' %}" width="168">
+            </div>
+            <div class="col-4">
+                <a class="logout-style" href="{% url 'logout' %}">ログアウト</a>
+                <p class="logout-style">{{ user.username }} / {{ user.last_name }}</p>
+                
+            </div>
+            <div class="col-12 BSDIP">
+                <div class="col-2" id="menuariaid">
+                    <div class="nav flex-column nav-pills bg-dark height100p sidberchosei" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <!--<a id="provisionPid" class="nav-link nav-font" href="{% url 'szi_provisionP' %}" onclick="MenuLinkColor();">製造・仕入計画表</a>-->
+                        <a id="instRid" class="nav-link nav-font" href="{% url 'szi_instR' %}" onclick="MenuLinkColor();">作業計画書</a>
+                        <a id="salesRid" class="nav-link nav-font"  href="{% url 'szi_salesR' %}" onclick="MenuLinkColor();">販売実績一覧表</a>
+                        <a id="disCid" class="nav-link nav-font"  href="{% url 'szi_disC' %}" onclick="MenuLinkColor();">値下げ管理表</a>
+                        <a id="salesJBid" class="nav-link nav-font"  href="{% url 'szi_salesJB' %}" onclick="MenuLinkColor();">時間帯別販売数</a>
+
+                        {% if user.is_staff == 1 %}
+                        <a class="nav-link nav-font" target="_blank" href="{% url 'admin:index' %}">管理サイト</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div id="loader-bg" class="disp-none">
+                        <div id="loader">
+                          <img id="img" src="{% static 'image/satomame.jpg' %}" class="imgdsn" alt="downloading" />
+                          <p>処理中...</p>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="v-pills-tabContent">
+                        {% block content %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

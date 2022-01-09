@@ -1,0 +1,44 @@
+{% extends "common/base.html" %}
+{% load static %}
+{% block extra_head %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.4/css/ui.jqgrid.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/instruction.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.4/js/jquery.jqgrid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.4/js/i18n/min/grid.locale-ja.js"></script>
+  <script src="{% static 'js/instruction.js' %}"></script>
+  
+
+{% endblock %}
+{% block title %}作業計画書{% endblock title %}
+
+{% block content %}
+<div id = "intrdc_headid">
+  <form method="POST" aciton="" style="margin-block-end: 0em!important;">
+      <label>組織</label>
+      {% for field in sosiki %}
+      {{ field }}
+      {% endfor %}
+      <label>店舗</label>
+      {% for field in kyoten %}
+      {{ field }}
+      {% endfor %}
+      <label>調達方法</label>
+      {% for field in ckmethtod %}
+      {{ field }}
+      {% endfor %}
+      <label>カテゴリ</label>
+      {% for field in hincat %}
+      {{ field }}
+      {% endfor %}
+
+      <label>日付</label>
+      {{ calender.name }}
+      <lebel>（<span id="sledtstrlabel">{{ yobivale }}</span>）</lebel>
+      {% csrf_token %}
+    </form>
+  
+    <button type="submit" id = "exellout_instruct"><img src="{% static 'image/exceldl.png' %}" alt="送信" /></button>
+</div>
+<table id="list">
+<div id="pager1"></div>
+{% endblock %}

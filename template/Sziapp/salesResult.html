@@ -1,0 +1,56 @@
+{% extends "common/base.html" %}
+{% load static %}
+{% block extra_head %}
+
+  <script src="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.4/js/jquery.jqgrid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.4/js/i18n/min/grid.locale-ja.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.4/css/ui.jqgrid.min.css">
+  <link rel="stylesheet" href="{% static 'css/salesResult.css'%}">
+  <script src="{% static 'js/salesResult.js' %}"></script>
+
+{% endblock %}
+{% block title %}販売実績一覧表{% endblock title %}
+
+{% block content %}
+
+<div id = "salesr_headid">
+  <label>店舗</label>
+  {% for field in kyotenvalue %}
+  {{ field }}
+  {% endfor %}
+  <label>調達方法</label>
+  {% for field in ckmvalue %}
+  {{ field }}
+  {% endfor %}
+
+  {{hinvalue}}
+
+  <div class="mgb05">
+    <button title="前月" id="sleltmnth" class="btn btn-info btn-sm" value="3"><<</button>
+    <button title="前週" id="sleltweek" class="btn btn-info btn-sm" value="2">-7</button>
+    <button title="前日" id="sleltday" class="btn btn-info btn-sm" value="1">-1</button>
+    <button title="今日" id="sletdday" class="btn btn-info btn-sm" value="0">今日</button>
+    {{ clndr.name }}
+    <lebel>（<span id="sledtstrlabel">{{ yobivale }}</span>）</lebel>
+    <button title="翌日" id="slenxtday" class="btn btn-info btn-sm" value="4">+1</button>
+    <button title="翌週" id="slenxtweek" class="btn btn-info btn-sm" value="5">+7</button>
+    <button title="翌月" id="slenxtmnth" class="btn btn-info btn-sm" value="6">>></button>
+  </div>
+
+  <div>
+    過去
+    {% for field in kako4value %}
+    {{ field }}
+    {% endfor %}
+    週
+
+    {{ checboxvalue }}
+
+    <button id="slesameyobiid" class="mr-1 btn btn-info btn-sm" value="3">同曜日</button>
+    <button id="slezenselectid" class="btn btn-info btn-sm" value="2">全選択</button>
+  </div>
+
+</div>
+<table id="list">
+<div id="pager1"></div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "common/base.html" %}
+{% load static %}
+{% block extra_head %}
+  <script src="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.4/js/jquery.jqgrid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.4/js/i18n/min/grid.locale-ja.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.4/css/ui.jqgrid.min.css">
+  <link rel="stylesheet" href="{% static 'css/discount.css'%}">
+  <script src="{% static 'js/discount.js' %}"></script>
+
+{% endblock %}
+{% block title %}値下げ管理表{% endblock title %}
+
+{% block content %}
+
+<div id = "discnt_headid">
+  <label>店舗</label>
+  {% for field in kyotenvalue %}
+  {{ field }}
+  {% endfor %}
+  <label>調達方法</label>
+  {% for field in ckmvalue %}
+  {{ field }}
+  {% endfor %}
+
+  {{hinvalue}}
+
+  <div class="mgb05">
+    <button title="前月" id="discltmnth" class="btn btn-info btn-sm" value="3"><<</button>
+    <button title="前週" id="discltweek" class="btn btn-info btn-sm" value="2">-7</button>
+    <button title="前日" id="discltday" class="btn btn-info btn-sm" value="1">-1</button>
+    <button title="今日" id="disctdday-from" class="btn btn-info btn-sm" value="0">今日</button>
+    {{ clndrfrom.name }}
+    <lebel>（<span id="discdtstrlabel-from">{{ yobivalefrom }}</span>）</lebel>
+    ～
+    {{ clndrto.name }}
+    <lebel>（<span id="discdtstrlabel-to">{{ yobivaleto }}</span>）</lebel>
+    <button title="今日" id="disctdday-to" class="btn btn-info btn-sm" value="0">今日</button>
+    <button title="翌日" id="discnxtday" class="btn btn-info btn-sm" value="4">+1</button>
+    <button title="翌週" id="discnxtweek" class="btn btn-info btn-sm" value="5">+7</button>
+    <button title="翌月" id="discnxtmnth" class="btn btn-info btn-sm" value="6">>></button>
+  </div>
+
+</div>
+
+<table id="list"></table>
+<div id="pager1"></div>
+{% endblock %}

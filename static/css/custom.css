@@ -1,0 +1,17 @@
+/* --------------------------
+jqgrid、jquery カスタマイズ
+-------------------------- */
+.ui-pg-table{
+    height: 0px!important;
+}
+
+.ui-widget-content .ui-state-hover{
+    color:black;
+    background:#fae2e6;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
+    border: 1px solid #dddddd;
+    background: #fae2e6;
+    color: #333333;
+}
